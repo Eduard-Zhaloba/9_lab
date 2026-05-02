@@ -97,7 +97,7 @@ int main()
 		});
     std::cout << std::endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
-	std::vector<int> vec1 = { 10, 2, -31, 45, 51, -7, -102, 88 };
+	std::vector<int> vec1 = { 10, 2, -31, 45, 51, -7, -102, 88, 90, -70, 23 };
     std::for_each(vec1.begin(), vec1.end(), [](int &n) {
         if(n<0) {
             n = 0;
@@ -108,6 +108,27 @@ int main()
         std::cout << *it << " ";
     }
     std::cout << std::endl;
+    double sum = 0;
+    for (auto it = vec1.begin(); it != vec1.end(); ++it)
+    {
+        sum += *it;
+    }
+    double average = sum / vec1.size();
+    std::cout << "Sum: " << sum << std::endl;
+	std::cout << "Average: " << average << std::endl;
+    std::cout << std::endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
+    std::string s = "A samurai has no goal, only a path";
+    std::string vowels = "aeiouyAEIOUY";
+	int counter = std::count_if(s.begin(), s.end(), [&vowels](char c) {
+		for (int i = 0; i < vowels.size(); ++i){
+            if(c == vowels[i]) {
+                return true;
+            }
+        }
+		return false;
+    });
+    std::cout << s<< std::endl;
+	std::cout << "Number of vowels: " << counter << std::endl;
 	return 0;
 }
