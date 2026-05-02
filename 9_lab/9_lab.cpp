@@ -54,6 +54,7 @@ int main()
         std::cout << *it << " ";
     }
 	std::cout << std::endl;
+    std::cout << std::endl;
     ////////////////////////////////////////////////////////////////////////////////////////
     std::array<std::string, 5> names = { "Oleksandr", "Ivan", "Anastasiia", "Petro", "Anna" };
 	std::sort(names.begin(), names.end(), [](const std::string& a, const std::string& b) { return a.length() < b.length();});
@@ -61,6 +62,7 @@ int main()
     {
         std::cout << *it << " ";
     }
+    std::cout << std::endl;
 	////////////////////////////////////////////////////////////////////////////////////////
 	TaxApplier tax;
 	std::deque<double> prices = { 10.0, 20.0, 30.0, 40.0, 50.0 };
@@ -72,9 +74,40 @@ int main()
         std::cout << *it << " ";
     }
     std::cout << std::endl;
+    std::cout << std::endl;
 	////////////////////////////////////////////////////////////////////////////////////////
     WithinRange withinRange;
-    std::set<int> numbers = { 5, 12, 18, 25, 30, 44, 50, 72 };
+    std::set<int> numbers = { 12, 5, 18, 25, 30, 44, 50, 72 };
     int result = std::count_if(numbers.begin(), numbers.end(), withinRange);
     std::cout << "numbers within range: " << result << std::endl;
+    std::cout << std::endl;
+	/////////////////////////////////////////////////////////////////////////////////////////
+    std::map<std::string, int> products = {
+        {"Laptop", 150},
+        {"Mouse", 45},
+        {"Keyboard", 110},
+        {"Monitor", 8},
+        {"Charger", 300}
+    };
+ 
+    std::for_each(products.begin(), products.end(), [](std::pair<const std::string, int>& product) {
+        if (product.second > 100) {
+            std::cout << product.first << ": " << product.second << std::endl;
+        }
+		});
+    std::cout << std::endl;
+	//////////////////////////////////////////////////////////////////////////////////////////
+	std::vector<int> vec1 = { 10, 2, -31, 45, 51, -7, -102, 88 };
+    std::for_each(vec1.begin(), vec1.end(), [](int &n) {
+        if(n<0) {
+            n = 0;
+		}
+    });
+    for (auto it = vec1.begin(); it != vec1.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+	//////////////////////////////////////////////////////////////////////////////////////////
+	return 0;
 }
